@@ -18,6 +18,7 @@ NoSource:	0
 Source1:	%{name}.conf
 URL:		http://www.horde.org/whups/
 Requires:	apache >= 1.3.33-2
+Requires:	apache(mod_access)
 Requires:	horde >= 3.0
 Requires:	php-mysql
 BuildArch:	noarch
