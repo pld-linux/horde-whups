@@ -1,6 +1,6 @@
 
-%define _snap 2005-03-04
-%define _rel 3
+%define	_snap	2005-03-04
+%define	_rel	3
 
 %include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
@@ -23,8 +23,8 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # horde accesses it directly in help->about
-%define		_noautocompressdoc  CREDITS
-%define		_noautoreq	'pear(Horde.*)'
+%define		_noautocompressdoc	CREDITS
+%define		_noautoreq		'pear(Horde.*)'
 
 %define		hordedir	/usr/share/horde
 %define		_appdir		%{hordedir}/%{name}
@@ -64,11 +64,11 @@ echo "<?php ?>" > 		$RPM_BUILD_ROOT%{_sysconfdir}/%{name}/conf.php
 cp -p config/conf.xml $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/conf.xml
 > $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/conf.php.bak
 
-cp -pR  lib/*                   $RPM_BUILD_ROOT%{_appdir}/lib
-cp -pR  locale/*                $RPM_BUILD_ROOT%{_appdir}/locale
-cp -pR  templates/*             $RPM_BUILD_ROOT%{_appdir}/templates
-cp -pR  themes/*                $RPM_BUILD_ROOT%{_appdir}/themes
-cp -pR  ticket/*                $RPM_BUILD_ROOT%{_appdir}/ticket
+cp -pR lib/*			$RPM_BUILD_ROOT%{_appdir}/lib
+cp -pR locale/*			$RPM_BUILD_ROOT%{_appdir}/locale
+cp -pR templates/*		$RPM_BUILD_ROOT%{_appdir}/templates
+cp -pR themes/*			$RPM_BUILD_ROOT%{_appdir}/themes
+cp -pR ticket/*			$RPM_BUILD_ROOT%{_appdir}/ticket
 
 ln -s %{_sysconfdir}/%{name} 	$RPM_BUILD_ROOT%{_appdir}/config
 ln -s %{_defaultdocdir}/%{name}-%{version}/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
