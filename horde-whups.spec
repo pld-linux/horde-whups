@@ -1,8 +1,8 @@
-%include	/usr/lib/rpm/macros.php
 
 %define _snap 2005-03-04
-%define _rel 2
+%define _rel 3
 
+%include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
 Name:		whups
 Version:	1.0
@@ -11,7 +11,7 @@ Release:	%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	BSD
 Group:		Networking/Utilities
 Source0:	http://ftp.horde.org/pub/snaps/%{_snap}/%{name}-HEAD-%{_snap}.tar.gz
-# Source0-md5:	038beacf5be31cf9a009c23be0f57a8e
+# NoSource0-md5:	038beacf5be31cf9a009c23be0f57a8e
 # don't put snapshots to df
 NoSource:	0
 Source1:	%{name}.conf
