@@ -7,6 +7,7 @@ Summary:	The Web Horde User Problem Solver
 Name:		whups
 Version:	1.0
 Release:	%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
+# Check license, is it AS-IS (license in doc), BSD (changelog of LICENSE) or GPL as description says.
 License:	BSD
 Group:		Networking/Utilities
 Source0:	http://ftp.horde.org/pub/snaps/%{_snap}/%{name}-HEAD-%{_snap}.tar.gz
@@ -42,7 +43,7 @@ this time.
 
 The Horde Project writes web applications in PHP and releases them
 under the GNU Public License. For more information (including help
-with IMP) please visit <http://www.horde.org/>.
+with WHUPS) please visit <http://www.horde.org/>.
 
 %prep
 %setup -q -n %{name}
