@@ -4,6 +4,7 @@
 
 %include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
+Summary(pl):	Narzêdzie WWW do rozwi±zywania problemów dla Horde
 Name:		whups
 Version:	1.0
 Release:	%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
@@ -42,8 +43,22 @@ code is near 1.0 quality and most features are fully implemented at
 this time.
 
 The Horde Project writes web applications in PHP and releases them
-under the GNU Public License. For more information (including help
-with WHUPS) please visit <http://www.horde.org/>.
+under the GNU General Public License. For more information (including
+help with WHUPS) please visit <http://www.horde.org/>.
+
+%description -l pl
+Whups to system ¶ledzienia b³êdów/zg³oszeñ dla Horde. Jest
+zaprojektowany tak, by byæ skrajnie elastycznym, pozwalaj±c
+u¿ytkownikom definiowaæ rodzaje zg³oszeñ, ró¿ne cykle ¿ycia (zbiory
+stanów) i priorytety dla ka¿dego rodzaju zg³oszenia, a tak¿e ³±czyæ
+rodzaje zg³oszeñ w zbiory kolejek. Taki sposób zaprojektowania
+pozwala na bardzo ogólne i wymy¶le sposoby wykorzystania Whups do
+wielu celów. Kod osi±gn±³ prawie jako¶æ 1.0 i wiêkszo¶æ mo¿liwo¶ci
+jest ju¿ w pe³ni zaimplementowana.
+
+Projekt Horde pisze aplikacje WWW a PHP i wydaje je na Powszechnej
+Licencji Publicznej GNU (General Public License). Wiêcej informacji (w
+tym pomoc dla WHUPS) mo¿na znale¼æ na stronie <http://www.horde.org/>.
 
 %prep
 %setup -q -n %{name}
