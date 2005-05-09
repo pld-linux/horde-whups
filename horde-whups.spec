@@ -1,6 +1,6 @@
 
-%define	_snap	2005-03-04
-%define	_rel	3
+%define	_snap	2005-05-09
+%define	_rel	1
 
 %include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
@@ -8,11 +8,10 @@ Summary(pl):	Narzêdzie WWW do rozwi±zywania problemów dla Horde
 Name:		whups
 Version:	1.0
 Release:	%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
-# Check license, is it AS-IS (license in doc), BSD (changelog of LICENSE) or GPL as description says.
 License:	BSD
-Group:		Networking/Utilities
+Group:		Applications/WWW
 Source0:	http://ftp.horde.org/pub/snaps/%{_snap}/%{name}-HEAD-%{_snap}.tar.gz
-# NoSource0-md5:	038beacf5be31cf9a009c23be0f57a8e
+# NoSource0-md5:	4b2f2cdd2a04e7e0ef65c9ca15f4481f
 # don't put snapshots to df
 NoSource:	0
 Source1:	%{name}.conf
@@ -43,10 +42,6 @@ for very general and sophisticated multi-purpose uses of Whups. The
 code is near 1.0 quality and most features are fully implemented at
 this time.
 
-The Horde Project writes web applications in PHP and releases them
-under the GNU General Public License. For more information (including
-help with WHUPS) please visit <http://www.horde.org/>.
-
 %description -l pl
 Whups to system ¶ledzienia b³êdów/zg³oszeñ dla Horde. Jest
 zaprojektowany tak, by byæ skrajnie elastycznym, pozwalaj±c
@@ -56,10 +51,6 @@ rodzaje zg³oszeñ w zbiory kolejek. Taki sposób zaprojektowania
 pozwala na bardzo ogólne i wymy¶le sposoby wykorzystania Whups do
 wielu celów. Kod osi±gn±³ prawie jako¶æ 1.0 i wiêkszo¶æ mo¿liwo¶ci
 jest ju¿ w pe³ni zaimplementowana.
-
-Projekt Horde pisze aplikacje WWW a PHP i wydaje je na Powszechnej
-Licencji Publicznej GNU (General Public License). Wiêcej informacji (w
-tym pomoc dla WHUPS) mo¿na znale¼æ na stronie <http://www.horde.org/>.
 
 %prep
 %setup -q -n %{name}
