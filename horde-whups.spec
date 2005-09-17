@@ -1,22 +1,23 @@
-
-%define	_snap	2005-05-09
-%define	_rel	1.1
-
+%define	_hordeapp whups
+%define	_snap	2005-09-17
+#define	_rc		rc1
+%define	_rel	0.3
+#
 %include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
 Summary(pl):	Narzêdzie WWW do rozwi±zywania problemów dla Horde
-Name:		whups
+Name:		%{_hordeapp}
 Version:	1.0
-Release:	%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
+Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	BSD
 Group:		Applications/WWW
-Source0:	http://ftp.horde.org/pub/snaps/%{_snap}/%{name}-HEAD-%{_snap}.tar.gz
-# NoSource0-md5:	4b2f2cdd2a04e7e0ef65c9ca15f4481f
-# don't put snapshots to df
-NoSource:	0
-Source1:	%{name}.conf
+Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.gz
+# Source0-md5:	4d041b67f9ce272da3ec7087abadf0b9
+Source1:	%{_hordeapp}.conf
 URL:		http://www.horde.org/whups/
+BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.226
+BuildRequires:	tar >= 1:1.15.1
 Requires:	apache >= 1.3.33-2
 Requires:	apache(mod_access)
 Requires:	horde >= 3.0
@@ -26,11 +27,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # horde accesses it directly in help->about
 %define		_noautocompressdoc	CREDITS
-%define		_noautoreq		'pear(Horde.*)'
+%define		_noautoreq		'pear(Horde.*)' 'pear(Text/Flowed.php)'
 
 %define		hordedir	/usr/share/horde
-%define		_appdir		%{hordedir}/%{name}
 %define		_sysconfdir	/etc/horde.org
+%define		_appdir		%{hordedir}/%{_hordeapp}
 
 %description
 Whups is Horde's bug tracking/ticketing system. It is designed to be
@@ -52,23 +53,23 @@ wielu celów. Kod osi±gn±³ prawie jako¶æ 1.0 i wiêkszo¶æ mo¿liwo¶ci
 jest ju¿ w pe³ni zaimplementowana.
 
 %prep
-%setup -q -n %{name}
+%setup -q -c -T -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
+tar zxf %{SOURCE0} --strip-components=1
+
 rm -f {lib,scripts,config,templates}/.htaccess
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name} \
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{_hordeapp} \
 	$RPM_BUILD_ROOT%{_appdir}/{docs,lib,locale,templates,themes,ticket}
 
-cp -pR	*.php			$RPM_BUILD_ROOT%{_appdir}
+cp -a *.php			$RPM_BUILD_ROOT%{_appdir}
 for i in config/*.dist; do
-	cp -p $i $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/$(basename $i .dist)
+	cp -a $i $RPM_BUILD_ROOT%{_sysconfdir}/%{_hordeapp}/$(basename $i .dist)
 done
-cp -pR	config/*.xml		$RPM_BUILD_ROOT%{_sysconfdir}/%{name}
-
-echo "<?php ?>" > 		$RPM_BUILD_ROOT%{_sysconfdir}/%{name}/conf.php
-cp -p config/conf.xml $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/conf.xml
-> $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/conf.php.bak
+echo '<?php ?>' >		$RPM_BUILD_ROOT%{_sysconfdir}/%{_hordeapp}/conf.php
+cp -p config/conf.xml	$RPM_BUILD_ROOT%{_sysconfdir}/%{_hordeapp}/conf.xml
+touch					$RPM_BUILD_ROOT%{_sysconfdir}/%{_hordeapp}/conf.php.bak
 
 cp -pR lib/*			$RPM_BUILD_ROOT%{_appdir}/lib
 cp -pR locale/*			$RPM_BUILD_ROOT%{_appdir}/locale
@@ -76,17 +77,16 @@ cp -pR templates/*		$RPM_BUILD_ROOT%{_appdir}/templates
 cp -pR themes/*			$RPM_BUILD_ROOT%{_appdir}/themes
 cp -pR ticket/*			$RPM_BUILD_ROOT%{_appdir}/ticket
 
-ln -s %{_sysconfdir}/%{name} 	$RPM_BUILD_ROOT%{_appdir}/config
-ln -s %{_defaultdocdir}/%{name}-%{version}/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
-
-install %{SOURCE1} 		$RPM_BUILD_ROOT%{_sysconfdir}/apache-%{name}.conf
+ln -s %{_sysconfdir}/%{_hordeapp} $RPM_BUILD_ROOT%{_appdir}/config
+ln -s %{_docdir}/%{name}-%{version}/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache-%{_hordeapp}.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ ! -f %{_sysconfdir}/%{name}/conf.php.bak ]; then
-	install /dev/null -o root -g http -m660 %{_sysconfdir}/%{name}/conf.php.bak
+if [ ! -f %{_sysconfdir}/%{_hordeapp}/conf.php.bak ]; then
+	install /dev/null -o root -g http -m660 %{_sysconfdir}/%{_hordeapp}/conf.php.bak
 fi
 
 if [ "$1" = 1 ]; then
@@ -101,13 +101,13 @@ EOF
 fi
 
 %triggerin -- apache1 >= 1.3.33-2
-%apache_config_install -v 1 -c %{_sysconfdir}/apache-%{name}.conf
+%apache_config_install -v 1 -c %{_sysconfdir}/apache-%{_hordeapp}.conf
 
 %triggerun -- apache1 >= 1.3.33-2
 %apache_config_uninstall -v 1
 
 %triggerin -- apache >= 2.0.0
-%apache_config_install -v 2 -c %{_sysconfdir}/apache-%{name}.conf
+%apache_config_install -v 2 -c %{_sysconfdir}/apache-%{_hordeapp}.conf
 
 %triggerun -- apache >= 2.0.0
 %apache_config_uninstall -v 2
@@ -115,12 +115,12 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc LICENSE README docs/* scripts
-%attr(750,root,http) %dir %{_sysconfdir}/%{name}
-%attr(640,root,root) %config(noreplace) %{_sysconfdir}/apache-%{name}.conf
-%attr(660,root,http) %config(noreplace) %{_sysconfdir}/%{name}/conf.php
-%attr(660,root,http) %config(noreplace) %ghost %{_sysconfdir}/%{name}/conf.php.bak
-%attr(640,root,http) %config(noreplace) %{_sysconfdir}/%{name}/[!c]*.php
-%attr(640,root,http) %{_sysconfdir}/%{name}/*.xml
+%attr(750,root,http) %dir %{_sysconfdir}/%{_hordeapp}
+%attr(640,root,root) %config(noreplace) %{_sysconfdir}/apache-%{_hordeapp}.conf
+%attr(660,root,http) %config(noreplace) %{_sysconfdir}/%{_hordeapp}/conf.php
+%attr(660,root,http) %config(noreplace) %ghost %{_sysconfdir}/%{_hordeapp}/conf.php.bak
+%attr(640,root,http) %config(noreplace) %{_sysconfdir}/%{_hordeapp}/[!c]*.php
+%attr(640,root,http) %{_sysconfdir}/%{_hordeapp}/conf.xml
 
 %dir %{_appdir}
 %{_appdir}/*.php
