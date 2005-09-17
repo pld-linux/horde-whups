@@ -92,7 +92,7 @@ fi
 if [ "$1" = 1 ]; then
 %banner %{name} -e <<EOF
 IMPORTANT:
-If You are installing WHUPS for the first time, You may need to
+If You are installing Whups for the first time, You may need to
 create the database tables. Look into directory
 %{_docdir}/%{name}-%{version}/scripts/sql
 to find out how to do this for your database.
