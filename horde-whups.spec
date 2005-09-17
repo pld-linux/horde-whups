@@ -1,12 +1,12 @@
 %define	_hordeapp whups
 %define	_snap	2005-09-17
 #define	_rc		rc1
-%define	_rel	0.3
+%define	_rel	0.2
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
 Summary(pl):	Narzêdzie WWW do rozwi±zywania problemów dla Horde
-Name:		%{_hordeapp}
+Name:		horde-%{_hordeapp}
 Version:	1.0
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	BSD
@@ -22,6 +22,7 @@ Requires:	apache >= 1.3.33-2
 Requires:	apache(mod_access)
 Requires:	horde >= 3.0
 Requires:	php-mysql
+Obsoletes:	%{_hordeapp}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
