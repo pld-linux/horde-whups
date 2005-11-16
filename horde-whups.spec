@@ -18,11 +18,12 @@ URL:		http://www.horde.org/whups/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.226
 BuildRequires:	tar >= 1:1.15.1
-Requires:	apache >= 1.3.33-2
 Requires:	apache(mod_access)
 Requires:	horde >= 3.0
 Requires:	php-mysql
+Requires:	webserver = apache
 Obsoletes:	%{_hordeapp}
+Conflicts:	apache < 1.3.33-2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,10 +49,10 @@ Whups to system ¶ledzienia b³êdów/zg³oszeñ dla Horde. Jest
 zaprojektowany tak, by byæ skrajnie elastycznym, pozwalaj±c
 u¿ytkownikom definiowaæ rodzaje zg³oszeñ, ró¿ne cykle ¿ycia (zbiory
 stanów) i priorytety dla ka¿dego rodzaju zg³oszenia, a tak¿e ³±czyæ
-rodzaje zg³oszeñ w zbiory kolejek. Taki sposób zaprojektowania
-pozwala na bardzo ogólne i wymy¶le sposoby wykorzystania Whups do
-wielu celów. Kod osi±gn±³ prawie jako¶æ 1.0 i wiêkszo¶æ mo¿liwo¶ci
-jest ju¿ w pe³ni zaimplementowana.
+rodzaje zg³oszeñ w zbiory kolejek. Taki sposób zaprojektowania pozwala
+na bardzo ogólne i wymy¶le sposoby wykorzystania Whups do wielu celów.
+Kod osi±gn±³ prawie jako¶æ 1.0 i wiêkszo¶æ mo¿liwo¶ci jest ju¿ w pe³ni
+zaimplementowana.
 
 %prep
 %setup -q -c -T -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
