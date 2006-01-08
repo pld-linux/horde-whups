@@ -1,7 +1,7 @@
 %define	_hordeapp whups
-%define	_snap	2005-09-17
+%define	_snap	2006-01-08
 #define	_rc		rc1
-%define	_rel	0.11
+%define	_rel	0.1
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
@@ -12,7 +12,7 @@ Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	BSD
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.gz
-# Source0-md5:	4d041b67f9ce272da3ec7087abadf0b9
+# Source0-md5:	7cb82901f8788c4aa1686b309a99fee1
 Source1:	%{_hordeapp}.conf
 URL:		http://www.horde.org/whups/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
