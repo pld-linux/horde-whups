@@ -5,7 +5,7 @@
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
-Summary(pl):	Narzêdzie WWW do rozwi±zywania problemów dla Horde
+Summary(pl.UTF-8):   NarzÄ™dzie WWW do rozwiÄ…zywania problemÃ³w dla Horde
 Name:		horde-%{_hordeapp}
 Version:	1.0
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
@@ -44,14 +44,14 @@ for very general and sophisticated multi-purpose uses of Whups. The
 code is near 1.0 quality and most features are fully implemented at
 this time.
 
-%description -l pl
-Whups to system ¶ledzienia b³êdów/zg³oszeñ dla Horde. Jest
-zaprojektowany tak, by byæ skrajnie elastycznym, pozwalaj±c
-u¿ytkownikom definiowaæ rodzaje zg³oszeñ, ró¿ne cykle ¿ycia (zbiory
-stanów) i priorytety dla ka¿dego rodzaju zg³oszenia, a tak¿e ³±czyæ
-rodzaje zg³oszeñ w zbiory kolejek. Taki sposób zaprojektowania pozwala
-na bardzo ogólne i wymy¶le sposoby wykorzystania Whups do wielu celów.
-Kod osi±gn±³ prawie jako¶æ 1.0 i wiêkszo¶æ mo¿liwo¶ci jest ju¿ w pe³ni
+%description -l pl.UTF-8
+Whups to system Å›ledzienia bÅ‚Ä™dÃ³w/zgÅ‚oszeÅ„ dla Horde. Jest
+zaprojektowany tak, by byÄ‡ skrajnie elastycznym, pozwalajÄ…c
+uÅ¼ytkownikom definiowaÄ‡ rodzaje zgÅ‚oszeÅ„, rÃ³Å¼ne cykle Å¼ycia (zbiory
+stanÃ³w) i priorytety dla kaÅ¼dego rodzaju zgÅ‚oszenia, a takÅ¼e Å‚Ä…czyÄ‡
+rodzaje zgÅ‚oszeÅ„ w zbiory kolejek. Taki sposÃ³b zaprojektowania pozwala
+na bardzo ogÃ³lne i wymyÅ›le sposoby wykorzystania Whups do wielu celÃ³w.
+Kod osiÄ…gnÄ…Å‚ prawie jakoÅ›Ä‡ 1.0 i wiÄ™kszoÅ›Ä‡ moÅ¼liwoÅ›ci jest juÅ¼ w peÅ‚ni
 zaimplementowana.
 
 %prep
