@@ -5,7 +5,7 @@
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
-Summary(pl.UTF-8):   Narzędzie WWW do rozwiązywania problemów dla Horde
+Summary(pl.UTF-8):	Narzędzie WWW do rozwiązywania problemów dla Horde
 Name:		horde-%{_hordeapp}
 Version:	1.0
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
