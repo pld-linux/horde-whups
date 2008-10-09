@@ -50,7 +50,7 @@ Kod osiągnął prawie jakość 1.0 i większość możliwości jest już w peł
 zaimplementowana.
 
 %prep
-%setup -q
+%setup -q -n %{_hordeapp}-h3-%{version}
 
 rm -f {,*/}.htaccess
 for i in config/*.dist; do
