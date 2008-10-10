@@ -5,7 +5,7 @@ Summary:	The Web Horde User Problem Solver
 Summary(pl.UTF-8):	Narzędzie WWW do rozwiązywania problemów dla Horde
 Name:		horde-%{_hordeapp}
 Version:	1.0
-Release:	0.1
+Release:	1
 License:	BSD
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/whups/%{_hordeapp}-h3-%{version}.tar.gz
@@ -64,7 +64,7 @@ cp -a *.php $RPM_BUILD_ROOT%{_appdir}
 cp -a config/* $RPM_BUILD_ROOT%{_sysconfdir}
 echo '<?php ?>' > $RPM_BUILD_ROOT%{_sysconfdir}/conf.php
 touch $RPM_BUILD_ROOT%{_sysconfdir}/conf.php.bak
-cp -a lib locale templates themes ticket $RPM_BUILD_ROOT%{_appdir}
+cp -a admin lib locale query queue search templates themes ticket $RPM_BUILD_ROOT%{_appdir}
 cp -a docs/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
@@ -138,13 +138,18 @@ fi
 %attr(660,root,http) %config(noreplace) %ghost %{_sysconfdir}/conf.php.bak
 %attr(640,root,http) %config(noreplace) %{_sysconfdir}/[!c]*.php
 %attr(640,root,http) %{_sysconfdir}/conf.xml
+%attr(660,root,http) %config(noreplace) %{_sysconfdir}/*.txt
 
 %dir %{_appdir}
 %{_appdir}/*.php
+%{_appdir}/admin
 %{_appdir}/config
 %{_appdir}/docs
 %{_appdir}/lib
 %{_appdir}/locale
+%{_appdir}/query
+%{_appdir}/queue
+%{_appdir}/search
 %{_appdir}/templates
 %{_appdir}/themes
 %{_appdir}/ticket
