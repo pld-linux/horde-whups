@@ -16,7 +16,7 @@ BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	horde >= 3.2
 Requires:	webapps
-Obsoletes:	%{_hordeapp}
+Obsoletes:	whups
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
