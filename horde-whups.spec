@@ -4,12 +4,12 @@
 Summary:	The Web Horde User Problem Solver
 Summary(pl.UTF-8):	Narzędzie WWW do rozwiązywania problemów dla Horde
 Name:		horde-%{_hordeapp}
-Version:	1.0
-Release:	2
+Version:	1.0.1
+Release:	1
 License:	BSD
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/whups/%{_hordeapp}-h3-%{version}.tar.gz
-# Source0-md5:	ccf2c8847e6e0570ec8fa6eb974a3054
+# Source0-md5:	3becdec5bcf99292d68780cc741e44ad
 Source1:	%{_hordeapp}.conf
 URL:		http://www.horde.org/whups/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
