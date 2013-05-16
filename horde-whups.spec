@@ -5,7 +5,7 @@ Summary:	The Web Horde User Problem Solver
 Summary(pl.UTF-8):	Narzędzie WWW do rozwiązywania problemów dla Horde
 Name:		horde-%{_hordeapp}
 Version:	1.0.1
-Release:	2
+Release:	3
 License:	BSD
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/whups/%{_hordeapp}-h3-%{version}.tar.gz
@@ -22,7 +22,7 @@ Conflicts:	apache-base < 2.4.0-1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_noautoreq	'pear(Horde.*)' 'pear(Text/Flowed.php)'
+%define		_noautoreq_pear	Horde.* Text/Flowed.php
 
 %define		hordedir	/usr/share/horde
 %define		_appdir		%{hordedir}/%{_hordeapp}
