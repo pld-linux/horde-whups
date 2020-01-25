@@ -1,6 +1,5 @@
 %define	_hordeapp whups
 #
-%include	/usr/lib/rpm/macros.php
 Summary:	The Web Horde User Problem Solver
 Summary(pl.UTF-8):	Narzędzie WWW do rozwiązywania problemów dla Horde
 Name:		horde-%{_hordeapp}
